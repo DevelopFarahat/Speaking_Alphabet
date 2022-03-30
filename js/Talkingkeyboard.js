@@ -83,7 +83,7 @@ function playAudios(selectorID) {
 function openNav() {
   sidenave.classList.remove("sidenave-close");
   sidenave.classList.add("sidenave-open");
-  sidenave.style.borderColor = JSON.parse(localStorage.getItem("color"));
+  /*sidenave.style.borderColor = JSON.parse(localStorage.getItem("color"));*/
 }
 function closeNav() {
   sidenave.classList.remove("sidenave-open");
