@@ -80,11 +80,13 @@ function playAudios(selectorID) {
   }
 }
 /* sidenave*/
+let sidebar = document.getElementById("open");
 function openNav() {
   sidenave.classList.remove("sidenave-close");
   sidenave.classList.add("sidenave-open");
   /*sidenave.style.borderColor = JSON.parse(localStorage.getItem("color"));*/
 }
+sidebar.addEventListener('click',openNav);
 function closeNav() {
   sidenave.classList.remove("sidenave-open");
   sidenave.classList.add("sidenave-close");
