@@ -247,11 +247,11 @@ function applaySelectedColor() {
         
     }
   }
-  let hr_line2 = document.getElementsByClassName("line2");
+  let hr_line2 = document.getElementsByClassName("line");
   for (let hr_item of hr_line2) {
     hr_item.style.color = JSON.parse(localStorage.getItem("color"));
   }
-  let hr_line1 = document.querySelector("[class='line1']");
+  let hr_line1 = document.querySelector("[class='line']");
   hr_line1.style.color = JSON.parse(localStorage.getItem("color"));
   btnChangeColor.style.backgroundColor = JSON.parse(
    localStorage.getItem("color")
