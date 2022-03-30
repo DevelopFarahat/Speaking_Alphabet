@@ -1,0 +1,248 @@
+@font-face {
+  font-family: englishFont;
+  src: url(../fonts/PetitFormalScript-Regular.ttf);
+}
+@font-face {
+  font-family: arabicFont;
+  src: url(../fonts/Scheherazade-Regular.ttf);
+}
+* {
+  box-sizing: border-box;
+}
+html , body{
+  height:100%;
+}
+.DIVcontainer{
+  height:100%;
+  display:flex;
+  flex-direction:column;
+  flex-wrap: wrap;
+  justify-content:space-around;
+  align-items:flex-start;
+}
+.row {
+  width:100%;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center; 
+}
+
+.col, .col-3{
+  flex:0 1 25%;
+  display: flex;
+  flex-direction:row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+label {
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.circle,
+.circle-arabic {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  flex:0 0 23%;
+  height:5vw;
+  border-radius: 50%;
+  color: #ffffff;
+  cursor: pointer;
+  text-transform: capitalize;
+  background: #000080;
+}
+
+.circle {
+  font-family: englishFont;
+}
+.circle-arabic {
+  font-family: arabicFont;
+  background-color: #000080;
+}
+.circle-color {
+  background-color: #000080;
+}
+body {
+  background: url("../images/favbackground.jpg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size:100% 100%;
+}
+.circle:hover {
+  color: #f9ce00;
+}
+.circle-arabic:hover {
+  color: #f9ce00;
+}
+.circle:active {
+  transform: scale(2, 2);
+  transition: all 0.5s ease-in-out;
+}
+.sidenave {
+  display:flex;
+  flex-direction:column;
+  flex-wrap: wrap;
+  align-items:center;
+  height: 100vh;
+  width: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow-x: hidden;
+  transition: 0.5s;
+  background-color: #ffffff;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -ms-transition: 0.3s;
+  -o-transition: 0.3s;
+}
+section{
+  width:100%;
+}
+.close-section{
+  width:100%;
+  display:flex;
+  flex-direction:column;
+  flex-wrap: wrap;
+  justify-content:space-evenly;
+  align-items: flex-end;
+}
+.select-language-section, .user-settings-section , .language-option-container{
+  width:100%;
+  display:flex;
+  flex-direction:column;
+  flex-wrap: wrap;
+  justify-content:space-evenly;
+  align-items:center;
+}
+.language-option-container{
+  height:185px;
+}
+.language-option-container h1 {
+  font-size: 1.5rem;
+  font-family: sans-serif;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-align: center;
+  color: #000080;
+  text-transform: capitalize;
+}
+.closebtn {
+  text-decoration: none;
+  font-size: 3.5rem;
+  color: #000000;
+  display: block;
+  float: right;
+  
+}
+.closebtn:hover {
+  color: #000000;
+  text-decoration: none;
+}
+.option1,
+.option2 {
+  display: block;
+  font-size: 1rem;
+  font-family: sans-serif;
+  color: #000000;
+  cursor: pointer;
+  text-align: center;
+  box-sizing: content-box;
+}
+.option1:hover {
+  color: #ff0000;
+}
+.option2:hover {
+  color: #ff0000;
+}
+.setting-header {
+  font-size: 1.5rem;
+  font-family: sans-serif;
+  font-weight: bold;
+  letter-spacing: 1px;
+  color: #000080;
+  text-transform: capitalize;
+  text-align: center;
+}
+.setting-container{
+  width:100%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.color-section{
+  width:100%;
+  display:flex;
+  flex-direction:column;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.color-section > * {
+  padding:1%;
+}
+.color-picker {
+  height: 5vh;
+  width:60%;
+}
+.color-label {
+  color: #000000;
+  font-size: 1rem;
+}
+button {
+  width: 85%;
+  color: #ffffff;
+  background: #000080;
+  outline: none;
+  border: none;
+  border-radius: 3%;
+  font-size: 1.2rem;
+  text-align: center;
+  font-family: "Courier New", Courier, monospace;
+}
+.line{
+  width:100%;
+  display: block;
+  color: #000080;
+  opacity: 1;
+}
+.sidenave-open {
+  width: 25vw;
+  border-right: 1px solid #000080;
+}
+.sidenave-close {
+  width: 0;
+}
+
+@media  screen and (min-width:768px) and (max-width:1115px) {
+  .circle,.circle-arabic {
+    flex: 0 0 35%;
+    height: 7vw;
+  }
+}
+@media screen and (min-width:575px) and (max-width:768px) {
+.circle,.circle-arabic {
+  flex: 0 0 50%;
+  height: 10vw;
+} 
+}
+@media screen and (min-width:300px) and (max-width:574px) {
+    .circle,.circle-arabic {
+      flex: 0 0 65%;
+      height: 12vw;
+    } 
+    label{
+      font-size: 1rem;
+    }
+    .sidenave-open {
+      width: 49vw;
+    
+    }
+}
+

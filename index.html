@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>LearnChild</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/bootstrap.css">
+    <link rel="stylesheet" href="./css/TalkingKeyboard.css">
+    <link rel="icon" type="image/png" href="/favicon.png"/>
+</head>
+<body>
+    <div class="container-fluid DIVcontainer" id="container">
+        
+        <div class="sidenave" id="mySidenav">
+            <section class="close-section">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <hr class="line"  size="3">
+            </section>
+            <section class="select-language-section">
+            <div id="naveHeadline" class="language-option-container">
+                <h1>languages</h1>
+                <hr class="line"  size="3">
+                <span id="close_arabic" class="option1">Arabic</span>
+                <span id="englishBack" class="option2">English</span>
+            </div>
+            <hr class="line"  size="3">
+        </section>
+        <section class="user-settings-section">
+            <div class="setting-container">
+                <h1 class="setting-header">Settings</h1>
+                <hr class="line"  size="3">
+                <div class="color-section">
+                <label class="color-label">circle color</label>
+                <input type="color" name="color" class="color-picker" id="colorPicker">
+                </div>
+                <hr class="line" size="3">
+                <button type="button" id="button">submit</button>
+            </div>
+        </section>
+        </div>
+        <span style="font-size:30px;cursor:pointer;color:#000000; align-self: flex-start;" id="open" onclick="openNav();">&#9776;</span>
+        
+        <div class="row" id="row_1" name="row1">
+            <div class="col  one">
+                <div class="circle A " id="A" onclick="playAudios(this);"><label>A</label></div>
+            </div>
+            <div class="col  one">
+                <div class="circle B" id="B" onclick="playAudios(this);"><label>B</label></div>
+            </div>
+            <div class="col  one">
+                <div class="circle C" id="C" onclick="playAudios(this);"><label>C</label></div>
+            </div>
+            <div class="col  one" id="ex-d">
+                <div class="circle D" id="D" onclick="playAudios(this);"><Label>D</Label></div>
+            </div>
+        </div>
+        <div class="row" id="row_2">
+            <div class="col  two">
+                <div class="circle E" id="E" onclick="playAudios(this);"><label >E</label></div>
+            </div>
+            <div class="col  two">
+                <div class="circle F" id="F" onclick="playAudios(this);"><label>F</label></div>
+            </div>
+            <div class="col  two" id="ex-g">
+                <div class="circle G" id="G" onclick="playAudios(this);"><label>G</label></div>
+            </div>
+            <div class="col  two" id="ex-h">
+                <div class="circle H" id="H" onclick="playAudios(this);"><label>H</label></div>
+            </div>
+        </div>
+        <div class="row" id="row_3">
+            <div class="col  three">
+                <div class="circle I" id="I" onclick="playAudios(this);"><label>I</label></div>
+            </div>
+            <div class="col  three" id="ex-j">
+                <div class="circle J" id="J" onclick="playAudios(this);"><label>J</label></div>
+            </div>
+            <div class="col  three" id="ex-k">
+                <div class="circle K" id="K" onclick="playAudios(this);"><label>K</label></div>
+            </div>
+            <div class="col  three" id="ex-l">
+                <div class="circle L" id="L" onclick="playAudios(this);"><label>L</label></div>
+            </div>
+        </div>
+        <div class="row" id="row_4">
+            <div class="col  four" id="ex-m">
+                <div class="circle M" id="M" onclick="playAudios(this);"><label>M</label></div>
+            </div>
+            <div class="col  four" id="ex-n">
+                <div class="circle N" id="N" onclick="playAudios(this);"><label>N</label></div>
+            </div>
+            <div class="col  four" id="ex-o">
+                <div class="circle O" id="O" onclick="playAudios(this);"><label>O</label></div>
+            </div>
+            <div class="col  four" id="ex-p">
+                <div class="circle P" id="P" onclick="playAudios(this);"><label>P</label></div>
+            </div>
+        </div>
+        <div class="row" id="row_5">
+            <div class="col  five" id="ex-q">
+                <div class="circle Q" id="Q" onclick="playAudios(this);"><label>Q</label></div>
+            </div>
+            <div class="col  five" id="ex-r">
+                <div class="circle R" id="R" onclick="playAudios(this);"><label>R</label></div>
+            </div>
+            <div class="col  five" id="ex-s">
+                <div class="circle S" id="S" onclick="playAudios(this);"><label>S</label></div>
+            </div>
+            <div class="col  five" id="ex-t">
+                <div class="circle T" id="T" onclick="playAudios(this);"><label>T</label></div>
+            </div>
+        </div>
+        <div class="row" id="row_6">
+            <div class="col six" id="ex-u">
+                <div class="circle U" id="U" onclick="playAudios(this);"><label>U</label></div>
+            </div>
+            <div class="col six" id="ex-v">
+                <div class="circle V" id="V" onclick="playAudios(this);"><label>V</label></div>
+            </div>
+            <div class="col  six" id="ex-w">
+                <div class="circle W" id="W" onclick="playAudios(this);"><label>W</label></div>
+            </div>
+            <div class="col   six" id="ex-x">
+                <div class="circle X" id="X" onclick="playAudios(this);"><label>X</label></div>
+            </div>
+        </div>
+        <div class="row" id="row_7">
+            <div class=" col-3">
+                <div class="circle Y" id="Y" onclick="playAudios(this);"><label>Y</label></div>
+            </div>
+            <div class="col-3">
+                <div class="circle Z" id="Z" onclick="playAudios(this);"><label>Z</label></div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <script src="/js/Talkingkeyboard.js"></script>
+</body>
+</html>
