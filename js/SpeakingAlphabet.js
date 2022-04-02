@@ -1,61 +1,62 @@
 const englishAudiosURL = {
-  A: "../audios/english/a.mp3",
-  B: "../audios/english/b.mp3",
-  C: "../audios/english/c.mp3",
-  D: "../audios/english/d.mp3",
-  E: "../audios/english/e.mp3",
-  F: "../audios/english/f.mp3",
-  G: "../audios/english/g.mp3",
-  H: "../audios/english/h.mp3",
-  I: "../audios/english/i.mp3",
-  J: "../audios/english/j.mp3",
-  K: "../audios/english/k.mp3",
-  L: "../audios/english/l.mp3",
-  M: "../audios/english/m.mp3",
-  N: "../audios/english/n.mp3",
-  O: "../audios/english/o.mp3",
-  P: "../audios/english/p.mp3",
-  Q: "../audios/english/q.mp3",
-  R: "../audios/english/r.mp3",
-  S: "../audios/english/s.mp3",
-  T: "../audios/english/t.mp3",
-  U: "../audios/english/u.mp3",
-  V: "../audios/english/v.mp3",
-  W: "../audios/english/w.mp3",
-  X: "../audios/english/x.mp3",
-  Y: "../audios/english/y.mp3",
-  Z: "../audios/english/z.mp3",
+  A: "/audios/english/a.mp3",
+  B: "/audios/english/b.mp3",
+  C: "/audios/english/c.mp3",
+  D: "/audios/english/d.mp3",
+  E: "/audios/english/e.mp3",
+  F: "/audios/english/f.mp3",
+  G: "/audios/english/g.mp3",
+  H: "/audios/english/h.mp3",
+  I: "/audios/english/i.mp3",
+  J: "/audios/english/j.mp3",
+  K: "/audios/english/k.mp3",
+  L: "/audios/english/l.mp3",
+  M: "/audios/english/m.mp3",
+  N: "/audios/english/n.mp3",
+  O: "/audios/english/o.mp3",
+  P: "/audios/english/p.mp3",
+  Q: "/audios/english/q.mp3",
+  R: "/audios/english/r.mp3",
+  S: "/audios/english/s.mp3",
+  T: "/audios/english/t.mp3",
+  U: "/audios/english/u.mp3",
+  V: "/audios/english/v.mp3",
+  W: "/audios/english/w.mp3",
+  X: "/audios/english/x.mp3",
+  Y: "/audios/english/y.mp3",
+  Z: "/audios/english/z.mp3",
 };
 const arabicAudiosURL = {
-  alif: "../audios/arabic/alif.mp3",
-  ba: "../audios/arabic/ba.mp3",
-  ta: "../audios/arabic/ta.mp3",
-  tha: "../audios/arabic/tha.mp3",
-  jiim: "../audios/arabic/jiim.mp3",
-  hha: "../audios/arabic/hha.mp3",
-  kha: "../audios/arabic/kha.mp3",
-  daal: "../audios/arabic/daal.mp3",
-  thaal: "../audios/arabic/thaal.mp3",
-  ra: "../audios/arabic/ra.mp3",
-  zay: "../audios/arabic/zay.mp3",
-  siin: "../audios/arabic/siin.mp3",
-  shiin: "../audios/arabic/shiin.mp3",
-  saad: "../audios/arabic/saad.mp3",
-  daad: "../audios/arabic/daad.mp3",
-  taa: "../audios/arabic/taa.mp3",
-  thaa: "../audios/arabic/thaa.mp3",
-  ayn: "../audios/arabic/ayn.mp3",
-  ghayn: "../audios/arabic/ghayn.mp3",
-  fa: "../audios/arabic/fa.mp3",
-  qaf: "../audios/arabic/qaf.mp3",
-  kaf: "../audios/arabic/kaf.mp3",
-  lam: "../audios/arabic/lam.mp3",
-  miim: "../audios/arabic/miim.mp3",
-  nuun: "../audios/arabic/nuun.mp3",
-  waw: "../audios/arabic/waw.mp3",
-  ha: "../audios/arabic/ha.mp3",
-  ya: "../audios/arabic/ya.mp3",
+  alif: "/audios/arabic/alif.mp3",
+  ba: "/audios/arabic/ba.mp3",
+  ta: "/audios/arabic/ta.mp3",
+  tha: "/audios/arabic/tha.mp3",
+  jiim: "/audios/arabic/jiim.mp3",
+  hha: "/audios/arabic/hha.mp3",
+  kha: "/audios/arabic/kha.mp3",
+  daal: "/audios/arabic/daal.mp3",
+  thaal: "/audios/arabic/thaal.mp3",
+  ra: "/audios/arabic/ra.mp3",
+  zay: "/audios/arabic/zay.mp3",
+  siin: "/audios/arabic/siin.mp3",
+  shiin: "/audios/arabic/shiin.mp3",
+  saad: "/audios/arabic/saad.mp3",
+  daad: "/audios/arabic/daad.mp3",
+  taa: "/audios/arabic/taa.mp3",
+  thaa: "/audios/arabic/thaa.mp3",
+  ayn: "/audios/arabic/ayn.mp3",
+  ghayn: "/audios/arabic/ghayn.mp3",
+  fa: "/audios/arabic/fa.mp3",
+  qaf: "/audios/arabic/qaf.mp3",
+  kaf: "/audios/arabic/kaf.mp3",
+  lam: "/audios/arabic/lam.mp3",
+  miim: "/audios/arabic/miim.mp3",
+  nuun: "/audios/arabic/nuun.mp3",
+  waw: "/audios/arabic/waw.mp3",
+  ha: "/audios/arabic/ha.mp3",
+  ya: "/audios/arabic/ya.mp3",
 };
+let autoSpeakingMoode = false;
 let row_7;
 let ha;
 let hamza;
@@ -96,11 +97,13 @@ function playAudios(selectorID) {
 let sidebar = document.getElementById("open");
 
 function openNav() {
+  if(autoSpeakingMoode == false){
   sidenave.classList.remove("sidenave-close");
   sidenave.classList.add("sidenave-open");
+  }
 }
-sidebar.addEventListener('click', openNav);
 
+sidebar.addEventListener('click', openNav);
 function closeNav() {
   sidenave.classList.remove("sidenave-open");
   sidenave.classList.add("sidenave-close");
@@ -325,7 +328,7 @@ shuffleIcon.addEventListener('click', function () {
       applaySelectedColor();
     }
   }, 1000);
-
+  
 });
 let switch_button = document.querySelector('.switch');
 let auto_speak_switch_road = document.querySelector('.switch-road');
@@ -333,8 +336,8 @@ let auto_speak_switch_container = document.querySelector('.auto-speak-switch-con
 let moodeStatus = document.getElementById('moode-status');
 let audiosUrl_en_Array_model = Object.values(englishAudiosURL);
 let audiosUrl_ar_array_model = Object.values(arabicAudiosURL);
-let autoSpeakingMoode = false;
 switch_button.addEventListener('click', function () {
+  autoSpeakingMoode = true;
   if (auto_speak_switch_road.getAttribute('auto-mood') == 'off') {
     auto_speak_switch_road.style.cssText = `justify-content:flex-end; transition:all 1s ease-in-out;`;
     auto_speak_switch_road.setAttribute('auto-mood', 'on');
@@ -342,19 +345,19 @@ switch_button.addEventListener('click', function () {
     moodeStatus.style.cssText = `margin-left: 8%;`;
     auto_speak_switch_container.style.cssText = `background-color: #009A31; transition:all 1s ease-in-out;`;
     playAutoMood();
-    autoSpeakingMoode = true;
     setTimeout(()=>{
       closeNav();
-    },1000);
-
+    },100);
+    sidebar.style.cssText = `font-size:30px;color:#000000; align-self: flex-start; padding-left: .5%;cursor:not-allowed;`;
   } else {
+    autoSpeakingMoode = false;
     auto_speak_switch_road.style.cssText = `justify-content:flex-start; transition:all 1s ease-in-out;`;
     auto_speak_switch_road.setAttribute('auto-mood', 'off');
     moodeStatus.innerHTML = 'OFF';
     moodeStatus.style.cssText = `margin-left: 65%;`
     auto_speak_switch_container.style.cssText = `background-color:#000000; transition:all 1s ease-in-out;`;
     clearInterval(audiosAutoSpeaking);
-    autoSpeakingMoode = false;
+    sidebar.style.cssText = `font-size:30px;color:#000000; align-self: flex-start; padding-left: .5%;cursor:pointer;`;
   }
 
 });
