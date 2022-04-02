@@ -65,6 +65,19 @@ let divRows = document.querySelectorAll("div.row");
 let colorPickerDefulatColor = document.querySelector('input[type="color"]').value = '#000080';
 let colorPicker = document.getElementById("colorPicker");
 let sidenave = document.getElementById("mySidenav");
+let app_body = document.querySelector('body');
+
+function setAppBackground() {
+  if (localStorage.getItem('app_background') == null) {
+    app_body.classList.add('application-background');
+  } else {
+    app_body.style.cssText = `background-image:url(${JSON.parse(localStorage.getItem('app_background'))});background-position:center center;
+    background-repeat:no-repeat;background-size:cover;`;
+  }
+
+}
+setAppBackground();
+
 function playAudios(selectorID) {
   for (key in englishAudiosURL) {
     if (selectorID.id == key) {
@@ -81,17 +94,18 @@ function playAudios(selectorID) {
 }
 /* sidenave*/
 let sidebar = document.getElementById("open");
+
 function openNav() {
   sidenave.classList.remove("sidenave-close");
   sidenave.classList.add("sidenave-open");
-  /*sidenave.style.borderColor = JSON.parse(localStorage.getItem("color"));*/
 }
-sidebar.addEventListener('click',openNav);
+sidebar.addEventListener('click', openNav);
+
 function closeNav() {
   sidenave.classList.remove("sidenave-open");
   sidenave.classList.add("sidenave-close");
 }
-dynamic.addEventListener("click", closeNav);
+//dynamic.addEventListener("click", closeNav);
 /* arabic letters */
 let arabicLetters = [
   ["أ", "ب", "ت", "ث"],
@@ -120,6 +134,7 @@ let arabicID = [
   ["qaf", "kaf", "lam", "miim"],
   ["nuun", "waw", "ha", "ya"],
 ];
+
 function changeHTMLContents() {
   let element = document.querySelectorAll("div");
   let selector;
@@ -140,10 +155,15 @@ function changeHTMLContents() {
       }
     }
   }
-  document.body.style = "direction:rtl;";
-  document.getElementById("mySidenav").style.cssText = "direction:ltr";
+  if (localStorage.getItem('app_background') == null) {
+    document.body.style.cssText = `direction:rtl;`;
+  } else {
+    document.body.style.cssText = `direction:rtl;background-image:url(${JSON.parse(localStorage.getItem('app_background'))});background-position:center center;
+    background-repeat:no-repeat;background-size:cover;`;
+  }
+  document.getElementById("mySidenav").style.cssText = `direction:ltr;`;
   document.getElementById("open").style.cssText =
-    "align-self: flex-end;font-size:30px;cursor:pointer; color:#000000;";
+    "align-self: flex-end;font-size:30px;cursor:pointer; padding-left:.5%; color:#000000;";
   document.getElementById("row_1").style.cssText = "clear:both";
   addHTMLClasses();
   addArabicAttribute();
@@ -153,6 +173,7 @@ function changeHTMLContents() {
   dynamic.id = "noBack";
 }
 dynamic.addEventListener("click", changeHTMLContents);
+
 function addHTMLClasses() {
   for (let x = 0; x < divRows.length; x++) {
     for (let i = 0; i < divRows[x].children.length; i++) {
@@ -160,6 +181,7 @@ function addHTMLClasses() {
     }
   }
 }
+
 function createHTMLElement() {
   row_7 = document.getElementById("row_7");
   /* first  added*/
@@ -167,12 +189,12 @@ function createHTMLElement() {
   ha.className = "col";
   let ha_circle = document.createElement("div");
   ha_circle.className += "circle circle-arabic";
-  ha_circle.id = arabicID[6][1];
+  ha_circle.id = arabicID[6][2];
   let labelinsideCircleHaa = document.createElement("label");
   labelinsideCircleHaa.append("ه");
   ha_circle.append(labelinsideCircleHaa);
   ha.append(ha_circle);
-  ha_circle.style.background = JSON.parse(localStorage.getItem("color"));
+  ha_circle.style.background = localStorage.getItem("color");
   ha_circle.addEventListener("click", function () {
     audio = new Audio(arabicAudiosURL["ha"]);
     audio.play();
@@ -183,8 +205,8 @@ function createHTMLElement() {
   hamza.className = "col seven";
   let hamza_circle = document.createElement("div");
   hamza_circle.className += " circle circle-arabic padd";
-  hamza_circle.id = arabicID[6][0];
-  hamza_circle.style.background = JSON.parse(localStorage.getItem("color"));
+  hamza_circle.id = arabicID[6][3];
+  hamza_circle.style.background = localStorage.getItem("color");
   hamza_circle.addEventListener("click", function () {
     audio = new Audio(arabicAudiosURL["ya"]);
     audio.play();
@@ -195,6 +217,7 @@ function createHTMLElement() {
   hamza.append(hamza_circle);
   row_7.append(hamza);
 }
+
 function addArabicAttribute() {
   for (let x = 0; x < divRows.length; x++) {
     for (let i = 0; i < divRows[x].children.length; i++) {
@@ -205,11 +228,16 @@ function addArabicAttribute() {
     }
   }
 }
+
 function backToEnglish() {
-  
-document.body.style = "direction:ltr;";
-document.getElementById("open").style.cssText =
-"align-self: flex-start;font-size:30px;cursor:pointer; color:#000000;";
+  if (localStorage.getItem('app_background') !== null) {
+    app_body.style.cssText = `background-image:url(${JSON.parse(localStorage.getItem('app_background'))});background-position:center center;
+  background-repeat:no-repeat;background-size:cover;`;
+  } else {
+    app_body.style.cssText = `direction:ltr;`;
+  }
+  document.getElementById("open").style.cssText =
+    "align-self: flex-start;font-size:30px;cursor:pointer; padding-left:.5%; color:#000000;";
   row_7.removeChild(ha);
   row_7.removeChild(hamza);
   for (let x = 0; x < divRows.length; x++) {
@@ -227,43 +255,143 @@ document.getElementById("open").style.cssText =
   }
   dynamic.id = "close_arabic";
 }
+let rondomHoverArr = ['#FF0000','#000099','#FFCC00'];
 function setColorForEnglishCircle() {
-  for (let x = 0; x < divRows.length; x++) {
-    for (let i = 0; i < divRows[x].children.length; i++) {
-      divRows[x].children[i].firstElementChild.classList.add("circle-color");
+  let rondomHoverableColor = rondomHoverArr[Math.floor(Math.random() * rondomHoverArr.length)];
+    for (let x = 0; x < divRows.length; x++) {
+      for (let i = 0; i < divRows[x].children.length; i++) {
+        divRows[x].children[i].firstElementChild.classList.add("circle-color");
+        divRows[x].children[i].firstElementChild.addEventListener('mouseenter',function(){
+          if(localStorage.getItem('color') == '#FF0000' || localStorage.getItem('color') == '#000099' || localStorage.getItem('color') == '#FFCC00'){
+            divRows[x].children[i].firstElementChild.style.color = rondomHoverableColor;
+          }else{
+            divRows[x].children[i].firstElementChild.style.color = rondomHoverableColor;
+          }
+        });
+        divRows[x].children[i].firstElementChild.addEventListener('mouseout',function(){
+          divRows[x].children[i].firstElementChild.style.color = '#FFFFFF';
+        });
+      }
     }
-  }
 }
 setColorForEnglishCircle();
 let colorChoosed;
 let option2 = document.getElementById("englishBack");
 option2.addEventListener("click", backToEnglish);
-option2.addEventListener("click", closeNav);
-let Btn = document.getElementById("button");
 let btnChangeColor = document.getElementById("button");
-//localStorage.setItem('color',JSON.stringify('#000080'));
+
 function applaySelectedColor() {
+
   for (let x = 0; x < divRows.length; x++) {
     for (let i = 0; i < divRows[x].children.length; i++) {
-      divRows[x].children[i].firstElementChild.style["background-color"] =JSON.parse(localStorage.getItem("color"));
-        
+      divRows[x].children[i].firstElementChild.style["background-color"] = localStorage.getItem("color");
     }
   }
-  let hr_line2 = document.getElementsByClassName("line");
-  for (let hr_item of hr_line2) {
-    hr_item.style.color = JSON.parse(localStorage.getItem("color"));
-  }
-  let hr_line1 = document.querySelector("[class='line']");
-  hr_line1.style.color = JSON.parse(localStorage.getItem("color"));
-  btnChangeColor.style.backgroundColor = JSON.parse(
-   localStorage.getItem("color")
-  );
-  sidenave.style.borderColor = JSON.parse(localStorage.getItem("color"));
-  colorPicker.value =JSON.parse(localStorage.getItem('color'));
+  colorPicker.value = localStorage.getItem('color');
 }
+applaySelectedColor();
+
 function selectColor() {
-  localStorage.setItem("color", JSON.stringify(colorPicker.value));
+  localStorage.setItem("color", colorPicker.value);
   applaySelectedColor();
 }
-Btn.addEventListener("click", selectColor);
-applaySelectedColor();
+colorPicker.addEventListener("input", selectColor);
+
+
+let openFile = function (file) {
+  let input = file.target;
+  let reader = new FileReader();
+  reader.onload = function () {
+    let dataURL = reader.result;
+    localStorage.setItem('app_background', JSON.stringify(dataURL));
+    app_body.style.cssText = `background-image:url(${JSON.parse(localStorage.getItem('app_background'))})`;
+  };
+  reader.readAsDataURL(input.files[0]);
+  app_body.classList.remove('app_background');
+};
+let shuffleIcon = document.querySelector('.shuffle-color-img-icon');
+shuffleIcon.addEventListener('click', function () {
+  shuffleIcon.classList.add('rotate-shuffle-icon');
+  let rondomColorArr = ['#FFC56C', '#ffb6b9', '#000099', '#17223b', '#f6003c', '#ffb549', '#08ffc8', '#200A3E', '#E8222D',
+    '#121b74', '#08182b', '#ffb6b9', '#443266', '#FA0026', '#38925E', '#34314c', '#003a44', '#e6542b', '#0C182D', '#0080ff'
+  ];
+  let rondomColor = rondomColorArr[Math.floor(Math.random() * rondomColorArr.length)];
+  if (localStorage.getItem('color') !== null) {
+    localStorage.setItem('color', rondomColor);
+  }
+  setTimeout(function () {
+    shuffleIcon.classList.remove('rotate-shuffle-icon');
+    if (shuffleIcon.classList.contains('rotate-shuffle-icon') == false) {
+      applaySelectedColor();
+    }
+  }, 1000);
+
+});
+let switch_button = document.querySelector('.switch');
+let auto_speak_switch_road = document.querySelector('.switch-road');
+let auto_speak_switch_container = document.querySelector('.auto-speak-switch-container');
+let moodeStatus = document.getElementById('moode-status');
+let audiosUrl_en_Array_model = Object.values(englishAudiosURL);
+let audiosUrl_ar_array_model = Object.values(arabicAudiosURL);
+let autoSpeakingMoode = false;
+switch_button.addEventListener('click', function () {
+  if (auto_speak_switch_road.getAttribute('auto-mood') == 'off') {
+    auto_speak_switch_road.style.cssText = `justify-content:flex-end; transition:all 1s ease-in-out;`;
+    auto_speak_switch_road.setAttribute('auto-mood', 'on');
+    moodeStatus.innerHTML = 'ON';
+    moodeStatus.style.cssText = `margin-left: 8%;`;
+    auto_speak_switch_container.style.cssText = `background-color: #009A31; transition:all 1s ease-in-out;`;
+    playAutoMood();
+    autoSpeakingMoode = true;
+    setTimeout(()=>{
+      closeNav();
+    },1000);
+
+  } else {
+    auto_speak_switch_road.style.cssText = `justify-content:flex-start; transition:all 1s ease-in-out;`;
+    auto_speak_switch_road.setAttribute('auto-mood', 'off');
+    moodeStatus.innerHTML = 'OFF';
+    moodeStatus.style.cssText = `margin-left: 65%;`
+    auto_speak_switch_container.style.cssText = `background-color:#000000; transition:all 1s ease-in-out;`;
+    clearInterval(audiosAutoSpeaking);
+    autoSpeakingMoode = false;
+  }
+
+});
+
+function playAutoMood(arrayModel, objectModel) {
+  if (dynamic.id === "close_arabic") {
+    arrayModel = audiosUrl_en_Array_model;
+    objectModel = englishAudiosURL;
+  } else {
+    console.log('arabic');
+    arrayModel = audiosUrl_ar_array_model;
+    objectModel = arabicAudiosURL;
+  }
+  let elementNumber = 0;
+  audiosAutoSpeaking = setInterval(() => {
+    for (var index = elementNumber; index <= elementNumber; index++) {
+      for (key in objectModel) {
+        if (objectModel[key] == arrayModel[index]) {
+          document.getElementById(key).style['background-color'] = 'rgba(247,33,0,1)';
+        }
+      }
+      audio = new Audio(arrayModel[index]);
+      audio.play();
+      setTimeout(() => {
+        applaySelectedColor();
+      }, 100);
+
+    }
+    elementNumber++;
+    if (elementNumber == arrayModel.length) {
+      auto_speak_switch_road.style.cssText = `justify-content:flex-start; transition:all 1s ease-in-out;`;
+      auto_speak_switch_road.setAttribute('auto-mood', 'off');
+      moodeStatus.innerHTML = 'OFF';
+      moodeStatus.style.cssText = `margin-left: 65%;`
+      auto_speak_switch_container.style.cssText = `background-color:#000000; transition:all 1s ease-in-out;`;
+      autoSpeakingMoode = false;
+      clearInterval(audiosAutoSpeaking);
+    }
+  }, 1000);
+}

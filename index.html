@@ -1,9 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>LearnChild</title>
+    <title> Speaking Alphabet | Letters</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="description"
+      content="Our Application 'Speaking Alphabet | Letters', supports 2 languages. first language  is english(default),second is  arabic.it can be used as a  learning tool for learning alphabet  letters ."
+    />
+    <meta name="author" content="Mohamed Farahat" />
+    <meta name="audience" content="all" />
+    <!-- Search Engine -->
+    <meta
+      name="description"
+      content="Our Application 'Speaking Alphabet | Letters', supports 2 languages. first language  is english(default),second is  arabic.it can be used as a  learning tool for learning alphabet  letters ."
+    />
+    <meta name="image" content="images/app_view.png" />
+    <!-- Schema.org for Google -->
+    <meta
+      itemprop="name"
+      content="Speaking Alphabet | Letters"
+    />
+    <meta
+      itemprop="description"
+      content="Our Application 'Speaking Alphabet | Letters', supports 2 languages. first language  is english(default),second is  arabic.it can be used as a  learning tool for learning alphabet  letters ."
+    />
+    <meta itemprop="image" content="images/app_view.png" />
+    <!-- Open Graph general (Facebook, Pinterest & Google+) -->
+    <meta
+      property="og:title"
+      content="Speaking Alphabet | Letters"
+    />
+    <meta
+      property="og:description"
+      content="Our Application 'Speaking Alphabet | Letters', supports 2 languages. first language  is english(default),second is  arabic.it can be used as a  learning tool for learning alphabet  letters ."
+    />
+    <meta property="og:image" content="images/app_view.png" />
+    <meta
+      property="og:image:alt"
+      content="image contain circle that contains alphabet letters"
+    />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:site_name"
+      content="Speaking Alphabet | Letters"
+    />
+    <!-- linked in-->
+    <meta property='og:title' content='Speaking Alphabet | Letters'/>
+    <meta property='og:image' content='images/app_view.png'/>
+    <meta property='og:description' content='Our Application 'Speaking Alphabet | Letters', supports 2 languages. first language  is english(default),second is  arabic.it can be used as a  learning tool for learning alphabet  letters .'/>
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/SpeakingAlphabet.css">
     <link rel="icon" type="image/png" href="images/favicon.png"/>
@@ -29,16 +75,46 @@
             <div class="setting-container">
                 <h1 class="setting-header">Settings</h1>
                 <hr class="line"  size="3">
+                <div class="user-seetings-container">
                 <div class="color-section">
-                <label class="color-label">circle color</label>
+                <label class="color-label" for="colorPicker">Color</label>
                 <input type="color" name="color" class="color-picker" id="colorPicker">
                 </div>
-                <hr class="line" size="3">
-                <button type="button" id="button">submit</button>
+                <div class="background-chooser-container">
+                <label class="label-background-file-chooser" for="file">Background</label>
+                <div class="button-container">
+                    <button type="button">Upload</button>
+                    <input type="file" id="file" onchange='openFile(event)'/>
+                </div>
+            </div>
+            </div>
+            <div class="shuffle-color-container">
+                <label class="shuffle-color-label">shuffle</label>
+                <div class="shuffle-icon-section">
+                <figure class="shuffle-color-figure">
+                   <picture class="shuffle-picture">
+                          <source srcset="images/sync-16px.png" media="(max-width:299px)">
+                          <img src="images/sync-32px.png" alt="shuffle-icon" class="shuffle-color-img-icon">
+                   </picture>
+                </figure>
+            </div>
+            </div>
+            <hr class="line" size="3">
+            <section class="auto-speaking-section">
+                <div class="switch-container">
+                <label class="auto-speak-lable">auto speaking</label>
+                <div class="auto-speak-switch-container">
+                    <div class="switch-road" auto-mood="off">
+                        <span class="moode_status" id="moode-status">OFF</span>
+                        <div class="switch"></div>
+                    </div>
+                </div>
+            </div>
+            </section>
             </div>
         </section>
         </div>
-        <span style="font-size:30px;cursor:pointer;color:#000000; align-self: flex-start;" id="open">&#9776;</span>
+        <span style="font-size:30px;cursor:pointer;color:#000000; align-self: flex-start; padding-left: .5%;" id="open">&#9776;</span>
         
         <div class="row" id="row_1" name="row1">
             <div class="col  one">
