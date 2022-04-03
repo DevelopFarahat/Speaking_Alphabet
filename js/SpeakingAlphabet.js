@@ -89,6 +89,7 @@ function playAudios(selectorID) {
   for (key in arabicAudiosURL) {
     if (selectorID.id == key) {
       audio = new Audio(arabicAudiosURL[key]);
+      audio.crossOrigin = 'anonymous';
       audio.play();
     }
   }
